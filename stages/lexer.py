@@ -40,12 +40,14 @@ T_BEGIN         = 'BEGIN'
 T_FUNC          = 'FUNC'
 T_RETURN        = 'RETURN'
 T_WHILE         = 'WHILE'
-DT_INT           = 'DT_INT'
-DT_FLOAT         = 'DT_FLOAT'
-DT_STRING        = 'DT_STRING'
-DT_BOOL          = 'DT_BOOL'
-DT_CHAR          = 'DT_CHAR'
-DT_VOID          = 'DT_VOID'
+T_IF            = 'IF'
+T_ELSE          = 'ELSE'
+DT_INT          = 'DT_INT'
+DT_FLOAT        = 'DT_FLOAT'
+DT_STRING       = 'DT_STRING'
+DT_BOOL         = 'DT_BOOL'
+DT_CHAR         = 'DT_CHAR'
+DT_VOID         = 'DT_VOID'
 
 
 class Token:
@@ -54,7 +56,7 @@ class Token:
         self.value = value
 
     def __repr__(self):
-        if self.value:
+        if self.value != None:
             return f'{self.type}:{self.value}'
         else:
             return f'{self.type}'
@@ -178,7 +180,6 @@ class Lexer:
 
         tokens.append(Token(T_EOF))
 
-
         # check for reserved words
         for i in range(len(tokens)):
             
@@ -203,6 +204,10 @@ class Lexer:
                     tokens[i] = Token(T_RETURN)
                 elif tokens[i].value == 'while':
                     tokens[i] = Token(T_WHILE)
+                elif tokens[i].value == 'if':
+                    tokens[i] = Token(T_IF)
+                elif tokens[i].value == 'else':
+                    tokens[i] = Token(T_ELSE)
 
 
         return tokens

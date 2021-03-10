@@ -7,6 +7,7 @@ begin Program1 {
         /* Here we begin the assignments */     
         x int := 4; 
         y int := 5; 
+        z int := 0;
         pi float := 3.14 - 5; 
         name string := "Liam Murphy"; 
     }
