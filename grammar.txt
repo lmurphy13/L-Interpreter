@@ -1,0 +1,113 @@
+"L" Programming Language
+
+Data types:
+
+int
+float
+bool
+string
+char
+void
+
+Each data type may have an associated array
+
+int[]
+float[]
+bool[]
+string[]
+char[]
+
+Basic operators:
+
+assignment :=
+equivalence ==
+less than <
+greater than >
+not equal !=
+minus -
+plus +
+mul *
+div /
+mod %
+
+Boolean operators:
+
+and &&
+or ||
+
+Comments:
+
+/* this is a single line comment */
+
+/* this is a 
+   multi line
+   comment */
+
+Sample program:
+
+begin <Program Name> {
+
+    func add(x int, y int) -> int {
+        out int := x + y;
+        return out;
+    }
+
+    func hello() -> void {
+        print("Hello world!");
+    }
+    
+    func main() -> int {
+        x int := 4;
+        y int := 5;
+        z int := add(x, y);
+
+        print("Sum", z);
+
+        while (true) {
+            hello();
+        }
+    }
+
+}
+
+BNF Context-Free Grammar
+
+               <Goal> ::= <ProgramDeclaration> <EOF>
+ <ProgramDeclaration> ::= "begin" <ID> "{" "func" "main" "(" ")" "->" "int" "{" (<VarDeclaration>)* (<FunctionDeclaration>)* (<Statement>)* "}" "}"
+     <VarDeclaration> ::= <ID> <Type> (":=")? ";"
+<FunctionDeclaration> ::= "func" <ID> "(" (<ID> <Type> ("," <ID> <Type>)*)? ")" "->" <Type> "{" (<VarDeclaration>)* (<Statement>)* "return" <Expression> ";" "}"
+               <Type> ::= <Type> ("[" "]")*
+                       | "int"
+                       | "float"
+                       | "bool"
+                       | "string"
+                       | "char"
+                       | "void"
+                       | <ID>
+          <Statement> ::= "{" (<Statement>)* "}"
+                       | "if" "(" <Expression> ")" <Statement> ( "else" <Statement> )?
+                       | "while" "(" <Expression> ")" <Statement>
+                       | <Expression> ":=" <Expression> ";"
+        <Expression> ::= <Expression> "||" <Expression>
+                       | <Expression> "&&" <Expression>
+                       | <Expression> "==" <Expression>
+                       | <Expression> "!=" <Expression>
+                       | <Expression> ">" <Expression>
+                       | <Expression> "<" <Expression>
+                       | <Expression> "+" <Expression>
+                       | <Expression> "-" <Expression>
+                       | <Expression> "*" <Expression>
+                       | <Expression> "/" <Expression>
+                       | <Expression> "%" <Expression>
+                       | <Expression> "[" <Expression> "]"
+                       | "-" <Expression>
+                       | "!" <Expression>
+                       | "(" <Expression> ")"
+                       | <ID>
+                       | <INT>
+                       | <FLOAT>
+                       | <STRING>
+                       | <CHAR>
+                       | "true"
+                       | "false"
+                       | "null"
